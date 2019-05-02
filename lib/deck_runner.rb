@@ -10,6 +10,7 @@ card_3 = Card.new("Describe in words the exact direction that is 697.5° clockwi
 cards = [card_1, card_2, card_3]
 
 deck = Deck.new(cards)
+binding.pry
 
 p deck.cards
 
