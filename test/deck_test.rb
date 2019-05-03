@@ -18,8 +18,10 @@ class DeckTest < MiniTest::Test
     assert_equal @deck.cards, @cards
   end
 
-  def test_cards_in_category
+  def test_count
     assert_equal @cards.count, @deck.count
   end
+
+
 
 end
