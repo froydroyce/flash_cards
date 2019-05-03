@@ -24,7 +24,6 @@ class DeckTest < MiniTest::Test
 
   def test_cards_in_category
     assert_equal @deck.cards_in_category(:STEM), [@card_2, @card_3]
-
   end
 
 
