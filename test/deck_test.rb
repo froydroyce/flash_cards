@@ -16,5 +16,10 @@ class DeckTest < MiniTest::Test
   def test_it_exists
     assert_instance_of Deck, @deck
     assert_equal @deck.cards, @cards
-    end
+  end
+
+  def test_cards_in_category
+    assert_equal @cards.count, @deck.count
+  end
+
 end
