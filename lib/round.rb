@@ -13,14 +13,15 @@ class Round
   def take_turn(guess)
     new_turn = Turn.new(guess, current_card)
     @turns.push(new_turn)
+    if new_turn.correct?
+      @number_correct += 1
+    end
     @deck.cards.rotate!
     new_turn
   end
 
-def number_correct
-  @guess == @turns.first.answer
-  @number_correct += 1
-end
+
+
 
 
 
