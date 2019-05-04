@@ -17,7 +17,7 @@ class Round
     if new_turn.correct?
       @number_correct += 1
     end
-    @deck.cards.rotate!
+    @deck.cards.shift
     new_turn
   end
 
