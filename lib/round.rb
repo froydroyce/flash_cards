@@ -24,6 +24,16 @@ class Round
     (@number_correct.to_f / @turns.count) * 100
   end
 
+  def percent_correct_by_category(category)
+    turns_in_category = @turns.find_all do |turn|
+      turn.card.category == category
+    end
+    correct_in_category = turns_in_category.find_all do |turn|
+      turn.correct?
+    end
+    (@number_correct.to_f / correct_in_category.count) * 100
+  end
+
   def number_correct_by_category(category)
     turns_in_category = @turns.find_all do |turn|
       turn.card.category == category
