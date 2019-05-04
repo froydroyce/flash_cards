@@ -1,5 +1,6 @@
 class Round
   attr_reader :deck, :turns, :number_correct
+
   def initialize(deck)
     @turns = []
     @deck = deck
@@ -43,5 +44,4 @@ class Round
     end
     correct_in_category.count
   end
-
 end
