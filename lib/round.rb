@@ -20,6 +20,15 @@ class Round
     new_turn
   end
 
+  def percent_correct
+    (@number_correct.to_f / @turns.count) * 100
+  end
+
+  #def number_correct_by_category(category)
+    # if @number_correct(category).correct?
+  #end
+
+
 
 
 
