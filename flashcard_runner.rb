@@ -15,7 +15,6 @@ require 'pry'
 box_intro = TTY::Box.frame(
   width: 50,
   height: 15,
-
   align: :center,
   padding: 5,
   title: {top_left: 'Flashcards with Ruby'}
@@ -32,7 +31,6 @@ if intro.empty?
   card_box = TTY::Box.frame(
     width: 50,
     height: 15,
-
     align: :center,
     padding: 5,
     title: {top_left: 'Flashcards with Ruby', bottom_right: "Card #{@round.turns.count + 1} of 4"}
@@ -49,7 +47,6 @@ if intro.empty?
   card_box = TTY::Box.frame(
     width: 50,
     height: 15,
-
     align: :center,
     padding: 5,
     title: {top_left: 'Flashcards with Ruby', bottom_right: "Card #{@round.turns.count + 1} of 4"}
@@ -58,15 +55,52 @@ if intro.empty?
   end
 
   puts card_box
+  puts "Your answer?"
+  guess = gets.chomp.capitalize
+  @round.take_turn(guess)
+  puts @round.turns.last.feedback
+
+  card_box = TTY::Box.frame(
+    width: 50,
+    height: 15,
+    align: :center,
+    padding: 5,
+    title: {top_left: 'Flashcards with Ruby', bottom_right: "Card #{@round.turns.count + 1} of 4"}
+  ) do
+    @round.current_card.question
+  end
+
+  puts card_box
+  puts "Your answer?"
+  guess = gets.chomp.capitalize
+  @round.take_turn(guess)
+  puts @round.turns.last.feedback
+
+  card_box = TTY::Box.frame(
+    width: 50,
+    height: 15,
+    align: :center,
+    padding: 5,
+    title: {top_left: 'Flashcards with Ruby', bottom_right: "Card #{@round.turns.count + 1} of 4"}
+  ) do
+    @round.current_card.question
+  end
+
+  puts card_box
+  puts "Your answer?"
   guess = gets.chomp.capitalize
   @round.take_turn(guess)
   puts @round.turns.last.feedback
 end
-
-
-
-
-#puts "Your answer?"
-#guess = gets.chomp.capitalize
-#@round.take_turn(guess)
-#puts @round.turns.last.feedback
+  if @round.turns.count == 4
+    game_over = TTY::Box.frame(
+      width: 50,
+      height: 15,
+      align: :center,
+      padding: 3,
+      title: {top_left: 'Flashcards with Ruby'}
+    ) do
+      "****** Game Over! ******\nYou had #{@round.number_correct} correct guesses out of 4 for a total score of #{@round.percent_correct}%.\nSTEM - #{@round.percent_correct_by_category(:STEM)}% correct\nGeography - #{@round.percent_correct_by_category(:Geography)}% correct"
+    end
+    puts game_over
+  end
