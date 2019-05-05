@@ -17,7 +17,7 @@ class Round
     if new_turn.correct?
       @number_correct += 1
     end
-    @deck.cards.rotate!
+    @deck.cards.shift
     new_turn
   end
 
@@ -27,12 +27,12 @@ class Round
 
   def percent_correct_by_category(category)
     turns_in_category = @turns.find_all do |turn|
-      turn.card.category == category
+      turn.card.category == category #2
     end
     correct_in_category = turns_in_category.find_all do |turn|
-      turn.correct?
+      turn.correct?#!
     end
-    (@number_correct.to_f / correct_in_category.count) * 100
+    (correct_in_category.count.to_f / turns_in_category.count) * 100
   end
 
   def number_correct_by_category(category)
